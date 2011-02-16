@@ -8,7 +8,7 @@ const Container = ({}) => {
   // States
   let [show, setshow] = useState(true);
   let [showClothTypeSelection, setShowClothTypeSelection] = useState(false);
-  let [currentSelectTedFashionPart, setcurrentSelectTedFashionPart] = useState("torso");
+  let [currentSelectTedFashionPart, setcurrentSelectTedFashionPart] = useState("torso")
 
   let [userSelection, setuserSelection] = useState({
     gender: "men",
@@ -16,7 +16,7 @@ const Container = ({}) => {
     torso: { type: "Round Neck Tshirt", color: "#f1f5f9" },
     pants: { type: "Jeans", color: "#808080" },
     accessories: { type: "", color: undefined },
-    shoes: { type: "Low Top Sneakers", color: "#000000" },
+    shoes: { type: "Low-Top Sneakers", color: "#000000" },
   });
 
   let [outfitType, setoutfitsType] = useState([

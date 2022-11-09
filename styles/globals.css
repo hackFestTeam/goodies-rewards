@@ -1,0 +1,158 @@
+@font-face {
+  font-family: "Bella";
+  src: url("/fonts/Bella.ttf");
+}
+
+/* In your css file where you want to use the font */
+.Bella {
+  font-family: "Bella";
+}
+
+@font-face {
+  font-family: "Muifamoso";
+  src: url("/fonts/Muifamoso.ttf");
+}
+
+/* In your css file where you want to use the font */
+.Muifamoso {
+  font-family: "Muifamoso";
+}
+@font-face {
+  font-family: "Vonique";
+  src: url("/fonts/Vonique.ttf");
+}
+
+/* In your css file where you want to use the font */
+.Vonique {
+  font-family: "Vonique";
+}
+
+@font-face {
+  font-family: "Quivera";
+  src: url("/fonts/Quivera.otf");
+}
+
+/* In your css file where you want to use the font */
+.Quivera {
+  font-family: "Quivera";
+}
+
+@font-face {
+  font-family: "Alegros";
+  src: url("/fonts/Alegros.ttf");
+}
+
+/* In your css file where you want to use the font */
+.Alegros {
+  font-family: "Alegros";
+}
+
+.highest {
+  z-index: 500;
+}
+
+* {
+  margin: 0;
+  /* font-family: Bella; */
+  font-family: Muifamoso;
+  font-weight: 900;
+  /* font-family: Alegros; */
+}
+
+.slate {
+  @apply bg-sky-50;
+}
+
+.full {
+  width: 40vw;
+}
+
+input[type="color"] {
+  -webkit-appearance: none;
+  border: none;
+  /* width: 32px; */
+  /* height: 32px; */
+}
+
+.flip {
+  transform: scale(1, -1) translate(0, -100);
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+input[type="color"]::-webkit-color-swatch {
+  border: 0.2px solid;
+  /* enable-background: new; */
+  border-left: transparent;
+  border-top-right-radius: 3rem;
+  border-bottom-right-radius: 3rem;
+}
+
+.jean {
+  enable-background: new 0 0 511.999 511.999;
+}
+
+.item {
+  height: 40vw;
+  /* color: #f1f5f9 */
+}
+
+.baray {
+  width: 100%;
+  background-image: url(http://www.w3.org/2000/svg);
+  background-size: cover;
+  height: 0;
+  padding: 0; /* reset */
+  padding-bottom: 92%;
+  border: thin dotted darkgrey;
+}
+
+.te {
+  width: 500px;
+}
+
+.scaling-svg-container {
+  position: relative;
+  height: 0;
+  width: 100%;
+  padding: 0;
+  padding-bottom: 100%;
+  /* override this inline for aspect ratio other than square */
+}
+.scaling-svg {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+
+.fu {
+  width: 100%;
+  padding-bottom: 92%;
+  height: 1px;
+  overflow: visible;
+}
+
+.icon {
+  image-rendering: pixelated;
+}
+
+::-webkit-scrollbar {
+  width: 1px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(255, 139, 139);
+  border-radius: 5rem;
+}
+
+.border-1 {
+  border: solid 1px;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

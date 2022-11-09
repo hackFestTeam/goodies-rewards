@@ -5,6 +5,93 @@ import { graph } from "./Clothes";
 import { getItemFromLocalStorage, setItemtoLocalStorage } from "./utils";
 
 const Container = ({}) => {
+  // States
+  let [show, setshow] = useState(true);
+  let [showClothTypeSelection, setShowClothTypeSelection] = useState(false);
+  let [currentSelectTedFashionPart, setcurrentSelectTedFashionPart] = useState("torso");
+
+  let [userSelection, setuserSelection] = useState({
+    gender: "men",
+    head: { type: "", color: "#f1f5f9" },
+    torso: { type: "Round Neck Tshirt", color: "#f1f5f9" },
+    pants: { type: "Jeans", color: "#808080" },
+    accessories: { type: "", color: undefined },
+    shoes: { type: "Low Top Sneakers", color: "#000000" },
+  });
+
+  let [outfitType, setoutfitsType] = useState([
+    { type: "head", height: "h-1/6", toShow: false },
+    { type: "torso", height: "h-2/6", toShow: true },
+    { type: "pants", height: "h-3/6", toShow: true },
+    { type: "shoes", height: "h-1/6", toShow: true },
+  ]);
+
+  let [genderOutfits, setgenderOutfits] = useState({
+    men: {
+      items: ["Torso", "Pants", "Shoes", "Accessories"],
+      torso: ["Round Neck Tshirt", "Hoodie", "Full Sleeves Tshirt", "Shirt"],
+      pants: ["Jeans", "Cargo", "Chinos", "Tracks"],
+      shoes: ["Low Top Sneakers", "High Top Sneakers", "Chelsea", "Sport Shoes", "Boots"],
+    },
+    women: {
+      items: ["Torso", "Pants", "Shoes", "Accessories"],
+      head: ["Earring"],
+      torso: ["Round Neck Tshirt", "V Neck Tshirt", "Hoodie", "Full Sleeves Tshirt", "Shirt"],
+      pants: ["Jeans", "Cargo", "Chinos", "Tracks"],
+      shoes: ["Heels", "Low Top Sneakers", "High Top Sneakers", "Chelsea", "Sport Shoes", "Boots"],
+    },
+  });
+
+  // Functions
+  const clickInput = id => document.getElementById(id).click();
+
+  const handleGenderChange = value => {
+    setuserSelection(previousSelections => ({ ...previousSelections, gender: value }));
+    setItemtoLocalStorage("userSelection", { ...userSelection, gender: value });
+  };
+
+  const handleClothesSelectionModal = selectTedFashionPart => {
+    setShowClothTypeSelection(true);
+    setcurrentSelectTedFashionPart(selectTedFashionPart);
+  };
+  const handleDetailedClothesSelectionModal = (key, value) => {
+    setuserSelection(previousSelection => ({ ...previousSelection, [key]: { type: value, color: previousSelection[key]?.color } }));
+    setItemtoLocalStorage("userSelection", { ...userSelection, [key]: { type: value, color: userSelection[key]?.color } });
+
+    setShowClothTypeSelection(false);
+  };
+
+  const handleColourChange = e => {
+    let { name, value } = e.target;
+
+    setuserSelection(previousSelection => ({ ...previousSelection, [name]: { type: previousSelection[name].type, color: value } }));
+    setItemtoLocalStorage("userSelection", { ...userSelection, [name]: { type: userSelection[name].type, color: value } });
+
+    reloadClothes();
+  };
+
+  const reloadClothes = () => {
+    setshow(false);
+    setTimeout(() => setshow(true), 0);
+  };
+
+  const handleDialogue = () => {
+    setItemtoLocalStorage("Speech", true);
+
+    setTimeout(() => {
+      alert("You can click the magic wand (Beside the 'Hackfest Designs' title) to reset the outfits.");
+    }, 20000);
+    setTimeout(() => {
+      alert("You can try out different outfits as per your choice.\n Also you can change their colours by clicking on them or the small handles on left side of window.");
+    }, 4000);
+  };
+
+  const handlePageLoadUtilities = () => {
+    if (getItemFromLocalStorage("Speech") == undefined) handleDialogue();
+    if (getItemFromLocalStorage("userSelection")) setuserSelection(previousSelection => ({ ...previousSelection, ...getItemFromLocalStorage("userSelection") }));
+  };
+
+  useEffect(() => handlePageLoadUtilities(), []);
 
   return (
     <div className=' w-full h-auto lg:h-full flex flex-col items-center justify-center m-0 bg-sky-50 relative'>
@@ -13,14 +100,14 @@ const Container = ({}) => {
           <div className='m-0 w-full py-4 lg:hidden items-center justify-center flex font-#000000 text-2xl uppercase Quivera'>
             <div className='flex items-center  w-2/6 justify-around'>
               <Image width='0' height='10' onClick={() => localStorage.clear()} className='w-1/6 mr-auto icon z-50' src='/magic-wand.svg' alt='' />
-              <div className='m-0 select-none'>Fashify</div>
+              <div className='m-0 select-none'>Hackfest Designs</div>
             </div>
           </div>
 
           <div className='m-0 w-full py-4 lg:fixed  lg:block hidden items-center justify-center top-0 font-#000000 text-2xl uppercase Quivera'>
             <div className='flex items-center   w-1/6 justify-center'>
               <Image width='0' height='10' className='w-1/6 mr-auto lg:mr-6 icon ' onClick={() => localStorage.clear()} src='/magic-wand.svg' alt='' />
-              <div className='m-0 lg:text-4xl'>Fashify</div>
+              <div className='m-0 lg:text-4xl'>Hackfest Designs</div>
             </div>
           </div>
 

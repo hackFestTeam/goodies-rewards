@@ -100,14 +100,14 @@ const Container = ({}) => {
           <div className='m-0 w-full py-4 lg:hidden items-center justify-center flex font-#000000 text-2xl uppercase Quivera'>
             <div className='flex items-center  w-2/6 justify-around'>
               <Image width='0' height='10' onClick={() => localStorage.clear()} className='w-1/6 mr-auto icon z-50' src='/magic-wand.svg' alt='' />
-              <div className='m-0 select-none'>Hackfest Designs</div>
+              <div className='m-0 select-none whitespace-nowrap'>Hackfest Designs</div>
             </div>
           </div>
 
           <div className='m-0 w-full py-4 lg:fixed  lg:block hidden items-center justify-center top-0 font-#000000 text-2xl uppercase Quivera'>
             <div className='flex items-center   w-1/6 justify-center'>
               <Image width='0' height='10' className='w-1/6 mr-auto lg:mr-6 icon ' onClick={() => localStorage.clear()} src='/magic-wand.svg' alt='' />
-              <div className='m-0 lg:text-4xl'>Hackfest Designs</div>
+              <div className='m-0 lg:text-4xl whitespace-nowrap'>Hackfest Designs</div>
             </div>
           </div>
 
